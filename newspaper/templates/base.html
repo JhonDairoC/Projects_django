@@ -1,0 +1,83 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, 
+            initial-scale=1, shrink-to-fit-no">
+        <title>{% block title %}Newspaper App{% endblock title %}</title>
+
+        <!--Hoja de estilo bootstrap-->
+        <link rel="stylesheet" href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+
+    <body>
+        <div class="container">
+                    <div class="text-center">
+                            {% if user.is_authenticated %}
+                                <nav class="navbar navbar-dark bg-dark fixed-top">
+                                    <div class="container-fluid">
+                                      <a class="navbar-brand" href="{%  url 'article_list' %}">Periodico</a>
+                                      <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                                        ☰
+                                      </button>
+                                      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                                        <div class="offcanvas-header">
+                                          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Hola {{ user.username }}</h5>
+                                          <button data-bs-dismiss="offcanvas" aria-label="Close">✕</button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                            
+                                            <li class="nav-item"><a type="button" class="btn btn-dark" href="{% url 'article_list' %}">Home</a></li>
+                                            <li class="nav-item"><a type="button" class="btn btn-dark" href="{% url 'logout' %}">Logout</a></li>
+                                            <li class="nav-item"><a type="button" class="btn btn-dark" href="{% url 'article_new' %}">New +</a></li>
+            
+                                          <form class="d-flex mt-3" role="search">
+                                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                            <button class="button">Search</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </nav>
+                                  <br>                                  
+                            {% else %}
+                                <nav class="navbar navbar-dark bg-dark fixed-top">
+                                    <div class="container-fluid">
+                                    <a class="navbar-brand" href="{% url 'article_new' %}">Periodico</a>
+                                    <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                                      ☰
+                                    </button>
+                                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                                        <div class="offcanvas-header">
+                                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Registrate</h5>
+                                        <button data-bs-dismiss="offcanvas" aria-label="Close">✕</button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                            <li class="nav-item">
+                                            <a class="btn btn-dark" aria-current="page" href="{% url 'signup' %}">Sing Up</a>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </nav>
+                                <br>
+                            {% endif %}
+                            <br>
+                        </div>
+                <div class="container">
+                    <br>
+                    <b>
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            <br>
+        </div>
+        <script src= {% static 'bootstrap-5.2.2-dist/js/bootstrap.min.js' %}></script>
+    </body>
+</html>
