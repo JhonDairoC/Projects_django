@@ -1,0 +1,64 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django Blog</title>
+        <!--Hoja de estilo-->
+
+        <link rel="stylesheet" href="{% static 'css2/base.css' %}">
+
+        <!--Hoja de estilo bootstrap-->
+        <link rel="stylesheet" href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class="container">
+                <header id="header">
+                    <img id="imagen" class="rounded-circle position-absolute top-0 start-0" src="{% static 'img/django-logo.png' %}" class="img-thumbnail">
+                    <div class="text-center">
+                            {% if user.is_authenticated %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Inicio de sesion exitoso</strong>   
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                                <p>Hola {{ user.username }}!</p>
+                                <ul class="nav justify-content-center">
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-primary" href="{% url 'logout' %}">Logout</a>
+                                    </li>
+                                </ul>
+                                
+                            {% else %}
+                            
+                                <p>Usuario no ha iniciado sesión.</p>
+                                <ul class="container-fluid">
+                                    <nav class="d-grid gap-2 d-md-block nav nav-pills flex-column flex-sm-row">
+                                        <a type="button" class="btn btn-outline-primary" href="{% url 'home' %}">Home</a>
+                                        <a type="button" class="btn btn-outline-primary" href="{% url 'login' %}">Login</a>
+                                        <a type="button" class="btn btn-outline-primary" href="{% url 'signup' %}">Sing up</a>
+                                    </nav>
+                                </ul>
+                        
+                            {% endif %}
+                            <br>
+                        </div>
+                </header>
+                <div class="container text-center container-fluid">
+                    <br>
+                    <b>
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            <br>
+
+            <div id="card" class="row g-0 bg-light position-relative">
+                <div class="col-md-6 mb-md-0 p-md-4">
+                    <img src="{% static 'img/django.png' %}" class="col-5">
+                </div>
+                <div class="col-md-6 p-4 ps-md-0">
+                    <h5 class="mt-0">Django</h5>
+                    <p>framework de desarrollo web de código abierto, escrito en Python</p>
+                </div>
+            </div>
+        </div>
+        <script src= {% static 'bootstrap-5.2.2-dist/js/bootstrap.min.js' %}></script>
+    </body>
+</html>

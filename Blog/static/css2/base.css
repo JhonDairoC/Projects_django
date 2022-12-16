@@ -1,0 +1,27 @@
+.box{
+    border: solid 4px;
+    background-color: rgb(180, 254, 229);
+}
+
+#imagen{
+    background-color: rgb(161, 215, 248);
+    height: 69px;
+    width: 69px;
+}
+
+#header{
+    border-bottom: solid 4px;
+}
+
+#card{
+    border-top: solid 4px;
+}
+
+#text{
+    text-decoration: none;
+}
+
+#check-circle-fill{
+    width: 5px;
+    height: 5px;
+}
