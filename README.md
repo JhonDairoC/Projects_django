@@ -18,7 +18,7 @@
 
     -add articles
   
-  Todos los formularios ya mencionados son apis que nos brinda django 
+  Todos los formularios ya mencionados son proporcionados por django 
   
 ------------------------------------------------------
 #3. Requerimientos necesarios para la correcta ejecucion del proyecto
